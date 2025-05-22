@@ -1,0 +1,9 @@
+baseURL = 'https://fagdagX.dgp.st'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "hello-friend-ng"
+
+[[menu.main]]
+	identifier = "posts"
+	name       = "Posts"
+	url        = "/posts"
