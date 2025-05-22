@@ -57,11 +57,11 @@ Mozilla (MDN) har en [fin guide](https://developer.mozilla.org/en-US/docs/Learn_
 
 I oppgave 1 så vi på å få en enkelt fil opp på serveren. Det er jo en god start, men ikke noe særlig til nettside å dele ut til verden. 
 
-Vi kunne dratt i gang noe sånt som Wordpress[^1] eller et annet fullverdig CMS, men siden vi ønsker å holde oss til basics skal vi kikke på Hugo – en såkalt Static Site Generator. 
+Vi kunne dratt i gang noe sånt som Wordpress[^1] eller et annet fullverdig CMS, men siden vi ønsker å holde oss til basics skal vi kikke på [Hugo](https://gohugo.io/) – en såkalt Static Site Generator. 
 
-Hugo tar etter litt oppsett dine håndskrevne blogginnlegg (i [Markdown](https://markdownlivepreview.com/) format) og genererer all HTML, CSS (og eventuelt JavaScript) for å gi deg en fullverdig blogg å legge ut på Internett. Bonusen er at statiske HTML-filer er så ekstremt simple at det er praktisk talt umulig å kompromitere deg som angriper på Internett. Bonusbonus for at siden din nærmest er dømt til å være rask så lenge du ikke fyller den med masse tunge bilder. 
+Hugo tar etter litt oppsett dine håndskrevne blogginnlegg (i [Markdown](https://markdownlivepreview.com/) format) og genererer all HTML, CSS (og eventuelt JavaScript) for å gi deg en fullverdig nettside/blogg å legge ut på Internett. Bonusen er at statiske HTML-filer er så ekstremt simple at det er praktisk talt umulig å kompromittere deg for en angriper på Internett. Bonusbonus for at siden din nærmest er dømt til å være rask så lenge du ikke fyller den med masse tunge bilder. 
 
-«No har me juksa litt» som Ingrid Espelid Hovig ville sagt[^2] – og vi har laget et minimalt Hugo-prosjekt med et "tema" i `filer/del1/oppg2`. Det er fra den mappen de neste kommandoene må kjøres fra (se cheat-sheet i eksempler mappen eller kjør `cd filer/del1/oppg2`). 
+«No har me juksa litt» som Ingrid Espelid Hovig ville sagt[^2] – og vi har laget et minimalt Hugo-prosjekt med et "tema" i `filer/del1/oppg2`. Det er fra den mappen de neste kommandoene må kjøres fra (se cheat-sheet i eksempler-mappen eller kjør `cd filer/del1/oppg2`). 
 
 #### Sjekke ståa lokalt
 
@@ -85,7 +85,7 @@ Endrer du innhold i disse to postene vil du se at bloggen din oppdateres automat
 
 #### Få bloggen ut på nettet
 
-Triket til Hugo er at den bare genererer et sett med filer i riktig struktur basert på postene dine som gjør at de kan serveres direkte av en webserver akkurat som i oppgave 1. Vi skal altså laste opp denne filstrukturen til vår VM. 
+Trikset til Hugo er at den bare genererer et sett med filer i riktig struktur basert på postene dine som gjør at de kan serveres direkte av en webserver akkurat som i oppgave 1. Vi skal altså laste opp denne filstrukturen til vår VM. 
 
 Først skal vi bare endre `baseUrl` i `hugo.toml` så den matcher domenet til VM-en vår. 
 
@@ -114,7 +114,7 @@ Vipps så har du publisert en blogg på Internett.
 
 Om du har kommet så langt håper vi at du har fått pirret nysgjerrigheten noe. Hvis dette var såpass enkelt – hva mer går an å gjøre? Vi har allerede kikket litt på Hugo for å lage en en statisk netside, men det finnes hundrevis av tjenester man kan kjøre på en server og tilgjengeliggjøre på Internett. 
 
-Herfra og inn blir det marginalt mindre håndholding. Noen ting vil man finne svar på i mappen eksempler, og lurer man på noe mer kan man spørre. 
+Herfra og inn blir det marginalt mindre håndholding. Noen ting vil man finne svar på i mappen `eksempler`, og lurer man på noe mer kan man spørre. 
 
 ### Oppgave 1 – Mealie
 
@@ -138,7 +138,7 @@ mkdir docker && mkdir docker/mealie && mkdir docker/mealie/mealie-data && cd doc
 ```
 Vi står nå i mealie-mappen. 
 
-I et lokalt terminalvindu (altså på denne maskinen du leser dette på), må vi kopiere over filene fra `del2/oppg1`. 
+I et lokalt terminalvindu (altså på denne maskinen du leser dette på), må vi kopiere over filene fra `del2/oppg1` (navigér hit i terminalen din – husk `cd ..` tar deg ett nivå opp i mappehiarkiet). 
 
 > MERK: Først må du endre verdien til `BASE_URL` i .env-filen til å matche din VM. F.eks `mealie.fagdag2.dgp.st`
 
