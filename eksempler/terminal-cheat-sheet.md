@@ -5,6 +5,12 @@ Liste ut filer og mapper i en mappe:
 ls
 ```
 
+Liste ut alle filer, inkludert "skjulte" filer som starter med punktum: 
+
+```sh
+ls -la
+```
+
 Lage mapper: 
 
 ```sh

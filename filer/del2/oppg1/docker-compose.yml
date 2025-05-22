@@ -1,13 +1,13 @@
-networks:
+networks: # her setter vi opp et lokalt nettverk som mealie og databasen kan prate sammen over
   internal:
     external: false
 services:
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:latest
+    image: ghcr.io/mealie-recipes/mealie:latest # Dette peker til mealie sitt Docker Image
     container_name: mealie
     restart: unless-stopped
     ports:
-        - 9000:9000
+        - 9000:9000 # Dette sier at containerens port 9000 skal "bindes" til VM-en sin port 9000 – som caddy peker til
     deploy:
       resources:
         limits:
@@ -19,7 +19,7 @@ services:
       ALLOW_SIGNUP: "true"
       PUID: 1000
       PGID: 1000
-      TZ: Europe/Oslo
+      TZ: Europe/Oslo # Tidssoner er viktig
       MAX_WORKERS: 1
       WEB_CONCURRENCY: 1
       BASE_URL: ${BASE_URL}
@@ -33,11 +33,10 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
     networks:
       - internal
 
-  postgres:
+  postgres: # databasen vår
     container_name: mealie_postgres
     image: postgres:15
     restart: always

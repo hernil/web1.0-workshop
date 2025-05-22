@@ -4,7 +4,7 @@
 
 ### Formål
 
-Internett er ikke så komplisert og uangripelig som man kanskje skulle tro. I sin enkleste form handler det om å la maskiner prate med hverandre på forhåndsdefinert vis for å utveksle filer. Faktisk er denne filen du leser nå lastet ned fra en datamaskin jeg har kjørende i tv-benken hjemme i stua. 
+Internett er ikke så komplisert og uangripelig som man kanskje skulle tro. I sin enkleste form handler det om å la maskiner prate med hverandre på forhåndsdefinert vis for å utveksle filer. 
 
 Målet for sesjonen er å legge ut sitt helt egne innhold på Internett. Åpent og tilgjengelig for alle som vet hvor de skal lete. 
 
@@ -16,9 +16,9 @@ Gjennom dette dokumentet vil vi referere til VM-en din med sitt "hostname", elle
 
 ### Gjennomføring
 
-Siden del 1, oppgave 2 ikke vil la seg gjennomføre uten videre om man ikke har administratortilgang på sin maskin ber vi dere om å gå sammen to og to – én teknisk og én ikke-teknisk. 
+Siden del 1, oppgave 2 ikke vil la seg gjennomføre uten videre om man ikke har administratortilgang på sin maskin ber vi dere om å gå sammen to og to – én teknisk og én ikke-teknisk. Jeg foreslår at den ikke-tekniske følger instruksjonene under veiledning av den tekniske gjennom i alle fall del 1. 
 
-Du kan godt lese veiledningen i denne filen på Github, men du skal laste ned en kopi av dette prosjektet lokalt. Det kan gjøres ved trykke på den grønne "Code" knappen, og velge "Download ZIP". Denne pakkes ut til valgt mappe. Deretter anbefaler vi å åpne mappen i din foretrukne "editor". 
+Du kan godt lese veiledningen i denne filen på Github, men du skal laste ned en kopi av dette prosjektet lokalt. Det kan gjøres ved trykke på den grønne "Code" knappen, og velge "Download ZIP". Denne pakkes ut til valgt mappe. Deretter anbefaler vi å åpne mappen i din foretrukne "editor" for å kunne redigere litt der det bes om. 
 
 ### Struktur
 
@@ -26,7 +26,7 @@ Alle filer som trengs for å løse en oppgave vil være å finne i egne mapper p
 
 ## Del 1 – det er bare en fil
 
-Vi har gjort noen forberedelser som gjør at det allerede kjører en _webserver_ på VM-en din. Det betyr at alle filer som blir lagt i mappen `/var/www/html` blir servert besøkende som går til `fagdagX.dgp.st`. Som vi lærte tidligere er det konvensjon å servere eventuelle besøkende en såkalt `index` fil – i vårt tilfelle `index.html`
+Vi har gjort noen forberedelser som gjør at det allerede kjører en _webserver_ (caddy) på VM-en din. Det betyr at alle filer som blir lagt i mappen `/var/www/html` blir servert besøkende som går til `fagdagX.dgp.st`. Som vi lærte tidligere er det konvensjon å servere eventuelle besøkende en såkalt `index` fil – i vårt tilfelle `index.html`
 
 
 ### Oppgave 1
@@ -125,34 +125,38 @@ Noen av kommandoene vi skal kjøre vil måtte kjøres på VM-en vår. Da må vi 
 ```sh
 ssh dgpadmin@fagdagX.dgp.st
 ```
-Først trenger vi Docker og Docker compose: 
-
-```sh
-sudo apt install docker.io docker-compose-v2
-```
 
 Vi står nå i vår brukers hjemmemappe. Vi foreslår å opprette en egen mappe for det vi driver med nå. 
 
 ```sh
-mkdir docker && mkdir docker/mealie && mkdir docker/mealie/mealie-data && cd docker/mealie
+mkdir docker && mkdir docker/mealie && cd docker/mealie
 ```
+
+> Protip: du kan kjøre `mkdir -p docker/mealie && cd docker/mealie` istedet om du vil lage begge mapper i en operasjon. 
+
 Vi står nå i mealie-mappen. 
 
 I et lokalt terminalvindu (altså på denne maskinen du leser dette på), må vi kopiere over filene fra `del2/oppg1` (navigér hit i terminalen din – husk `cd ..` tar deg ett nivå opp i mappehiarkiet). 
 
-> MERK: Først må du endre verdien til `BASE_URL` i .env-filen til å matche din VM. F.eks `mealie.fagdag2.dgp.st`
+> MERK: Først må du endre verdien til `BASE_URL` i `.env`-filen til å matche din VM. F.eks `mealie.fagdag2.dgp.st`
 
 ```sh
 scp docker-compose.yml .env dgpadmin@fagdagX.dgp.st:~/docker/mealie/ 
 
 ```
 
+Vi har nå overført de to filene `docker-compose.yml` og `.env` som sammen inneholder informasjonen docker trenger for å kjøre en såkalt container med programmet `Mealie`. Du må gjerne åpne `docker-compose.yml` om du er nysgjerrig på hvordan det hele ser ut. 
+
 Tilbake i terminalen der vi er tilkoblet VM-en så kan vi kjøre (fortsatt stående i `~/docker/mealie`-mappen): 
 ```sh
 sudo docker compose up -d 
 ```
 
-Om du nå besøker `mealie.fagdagX.dgp.st` vil du nå komme til din helt egne Mealie-instans. Bon appetit! 
+Dette spinner opp Mealie og en tilhørende database og gjør alt klart til ditt første besøk. 
+
+> Merk: Caddy som vi nevnte tidligere er også her forhåndskonfigurert med litt juks. Om du er nysgjerrig kan du ta en titt ved å kjøre `cat /etc/caddy/Caddyfile` i terminalen som er tilkoblet VM-en din. 
+
+Om du nå besøker `mealie.fagdagX.dgp.st` vil du nå komme til din helt egne Mealie-instans. Logg gjerne inn og lek deg med din nye oppskriftsbok. Bon appetit! 
 
 ### Oppgave 2 – Freestyle
 
