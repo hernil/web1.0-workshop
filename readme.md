@@ -12,9 +12,13 @@ Målet for sesjonen er å legge ut sitt helt egne innhold på Internett. Åpent 
 
 Alle har fått utdelt påloggingsinformasjon til en såkalt virtuell maskin (VM). En VM oppfører seg for alle praktiske formål som en helt vanlig datamaskin. Det største skillet fra den til maskinen du sitter på nå vil være at VM-en kjører en variant av Linux, samt at den ikke er satt opp med et såkalt "skrivebordsmiljø" eller GUI (Graphical User Interface) – det betyr at vi i noen tilfeller må bruke kommandolinjeverktøy for å interagere med den. 
 
+Gjennom dette dokumentet vil vi referere til VM-en din med sitt "hostname", eller domenet som peker til den. Eksempelvis `fagdagX.dgp.st` der `X` må byttes med tallet du fikk utdelt nå i stad. 
+
 ### Gjennomføring
 
 Siden del 1, oppgave 2 ikke vil la seg gjennomføre uten videre om man ikke har administratortilgang på sin maskin ber vi dere om å gå sammen to og to – én teknisk og én ikke-teknisk. 
+
+Du kan godt lese veiledningen i denne filen på Github, men du skal laste ned en kopi av dette prosjektet lokalt. Det kan gjøres ved trykke på den grønne "Code" knappen, og velge "Download ZIP". Denne pakkes ut til valgt mappe. Deretter anbefaler vi å åpne mappen i din foretrukne "editor". 
 
 ### Struktur
 
@@ -29,10 +33,13 @@ Vi har gjort noen forberedelser som gjør at det allerede kjører en _webserver_
 
 Vi skal altså rett og slett flytte en fil fra vår maskin til VM-en på Internett. Til dette kan vi bruke verktøyet `scp` som står for `secure file copy`. Her oppgir vi en kildefil, og en destinasjon denne skal kopieres til. 
 
+Først kan du besøke `fagdagX.dgp.st` i nettleseren din og se at du ikke får opp noe. Du får en feilmelding. Nærmere bestemt har webserveren vår returnert HTTP koden 404 som betyr `Not Found`. Vi har altså ingenting på serveren vår. 
+
 Kommandoen ser rett og slett slik ut: 
 
 > [!IMPORTANT]  
 > Denne kommandoen, og alle påfølgende, forutsetter at du står i samme mappe som denne filen du leser nå. Om dette ikke gir mening for deg, huk tak i en utvikler eller en av oss. 
+
 
 ```sh
 scp filer/del1/oppg1/index.html dgpadmin@fagdagX.dgp.st:/var/www/html/index.html
@@ -40,9 +47,7 @@ scp filer/del1/oppg1/index.html dgpadmin@fagdagX.dgp.st:/var/www/html/index.html
 
 Du vil bli spurt om passordet til brukeren din. 
 
-Du kan nå besøke domenet ditt i nettleseren og du skal nå se følgende: 
-
-![hello-world](assets/hello-world.png)
+Du kan nå besøke domenet ditt i nettleseren og du skal nå se følgende forhåpentligvis få opp en "Hello World!" melding. 
 
 Du står nå fritt til å endre, legge til tekst og annet fjas du måtte ønske å bedrive på din helt nye nettside. For å se endringene må du kopiere filen på nytt. 
 
