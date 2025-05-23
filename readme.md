@@ -67,6 +67,12 @@ Hugo tar etter litt oppsett dine håndskrevne blogginnlegg (i [Markdown](https:/
 
 Hugo kommer med sin egne webserver for å la deg se hvordan ting ser ut lokalt[^3]. 
 
+> [!IMPORTANT]  
+> På grunn av instillinger på Macen vil ikke Hugo tillates å kjøre før du har gjort følgende: 
+>   1. Aktiver administratortilgang med privileges appen
+>   2. kjør `sudo xattr -rd com.apple.quarantine ./bin/hugo`
+
+
 ```sh
 ./bin/hugo serve --buildDrafts
 ```
